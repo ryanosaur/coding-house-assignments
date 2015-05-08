@@ -6,12 +6,15 @@ function countFunction(){
     var regex = /[A-Za-z]*/g;
     var spaceCount = textValue.replace(regex, '').length;
 
-    var charCount = 0;
-    var words = textValue.split(' ');
-    for (i = 0; i < words.length -1; i++) { 
-        charCount += words[i].length;
+    var averageCharacters = 0;
+    if(wordCount != 0)
+    {
+        averageCharacters = (characterCount - spaceCount) / wordCount;    
     }
-    var averageCharacters = charCount / words.length;
+    else
+    {
+        averageCharacters = textValue.length;
+    }
 
     var objectToReturn = {
         textValue: textValue,
