@@ -1,11 +1,20 @@
 var Rev = {};
 
 Rev.reverseString = function(textToReverse){
-    var words = textToReverse.split(' ');
-    
-    return words.map(Rev.reverseWord).join(' ');
+    return textToReverse.split(' ').map(Rev.reverseWord).join(' ');
 };
 
 Rev.reverseWord = function(word){
-    return word.split('').reverse().join('');
+    word = Rev.reverse(word, '');
+    
+    if(word.includes(','))
+        word = Rev.reverse(word, ',');
+    else if(word.includes('.'))
+        word = Rev.reverse(word, '.');
+    
+    return word;
+};
+
+Rev.reverse = function(word, char){
+    return word.split(char).reverse().join(char);
 };
