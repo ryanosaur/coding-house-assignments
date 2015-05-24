@@ -3,12 +3,15 @@ var DateCalc = {};
 DateCalc.totalDaysLeft = 0;
 
 DateCalc.calculate = function(dateToParse){
+    DateCalc.init(dateToParse);
+    return DateCalc.stringify(DateCalc.years(), DateCalc.months(), DateCalc.days());
+};
+
+DateCalc.init = function(dateToParse){
     var date = DateCalc.parseDate(dateToParse);
     var today = Date.now();
     var oneDay = 24*60*60*1000;
     DateCalc.totalDaysLeft = Math.floor((date - today) /oneDay);
-    
-    return DateCalc.stringify(DateCalc.years(), DateCalc.months(), DateCalc.days());
 };
 
 DateCalc.parseDate = function(dateToParse){
