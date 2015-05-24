@@ -8,7 +8,7 @@ DateCalc.calculate = function(dateToParse){
     var oneDay = 24*60*60*1000;
     DateCalc.totalDaysLeft = Math.floor((date - today) /oneDay);
     
-    return DateCalc.prettyPrintDate(DateCalc.years(), DateCalc.months(), DateCalc.days());
+    return DateCalc.stringify(DateCalc.years(), DateCalc.months(), DateCalc.days());
 };
 
 DateCalc.parseDate = function(dateToParse){
@@ -32,7 +32,7 @@ DateCalc.days = function(){
     return Math.floor(DateCalc.totalDaysLeft / 24);
 };
 
-DateCalc.prettyPrintDate = function(years, months, days){
+DateCalc.stringify = function(years, months, days){
     var dateString = "";
     
     if (years !== 0)
