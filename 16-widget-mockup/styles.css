@@ -1,0 +1,56 @@
+.body{
+    background-color: #2090AD;
+    color: #727272;
+}
+
+.fruit-box {
+    background-image: url("https://www.eatforhealth.gov.au/sites/default/files/images/the_guidelines/fruit_selection_155265101_web.jpg");
+}
+
+.veg-box {
+    background-image: url("http://bravomax.zemberltd.com/wp-content/uploads/2015/01/vegetables2.jpg");
+}
+
+.meat-box {
+    background-image: url("http://rivesqualitymeats.com/wp-content/uploads/2013/08/rives_quality_meats_2013.jpg");
+}
+
+.image-box{
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-color: white;
+    height: 200px;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+}
+
+.details{
+    border-top: 1px solid #D8D8D8;
+    background-color: #F8F8F8; 
+    padding: 15px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.cart{
+    padding-top: 10px;
+}
+
+.title{
+    color: white;   
+}
+
+input[type=number]{
+    text-align: center;
+    width: 50px;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {  
+    opacity: 1;
+}
+
+.pad{
+    padding: 10px;
+}
