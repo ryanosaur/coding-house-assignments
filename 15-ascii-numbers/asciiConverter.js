@@ -1,5 +1,3 @@
-document.onload = convert();
-
 function convert(){
     //part 1
     console.log('the next 6 numbers in sequence are 20, 21, 22, 100, 101, 102');
