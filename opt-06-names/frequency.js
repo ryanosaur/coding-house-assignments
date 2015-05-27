@@ -43,4 +43,3 @@ Names.sortNames = function(){
     })
     .slice(0,19);
 };
-
