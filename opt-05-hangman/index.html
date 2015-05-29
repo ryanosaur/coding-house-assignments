@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <link href="css/materialize.css" rel="stylesheet" type="text/css">
+
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="js/hangman.js"></script>
+    <script src="js/materialize.min.js"></script>
+</head>
+
+<body>
+    <nav class="light-blue lighten-1" role="navigation">
+        <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Coding House Challenge!</a>
+        </div>
+    </nav>
+    <div class="section no-pad-bot" id="index-banner">
+        <div class="container">
+            <br>
+            <br>
+            <h1 class="header center orange-text">Play Hangman!</h1>
+            <div class="row center">
+                <h5 class="header col s12 light">Start pressing keys to play! You'll get 3 wrong answers... then you're dead! But don't worry, if you press the same key twice - we wont hold it against you. ;)</h5>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="card">
+        <div class="card-image waves-effect waves-block waves-light">
+            <div id="solution-space" class="center-align">
+                
+            </div>
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">Click here for a hint! <i class="mdi-navigation-arrow-drop-up right"></i></span>
+        </div>
+        <div id="hints" class="card-reveal">
+          <span class="card-title grey-text text-darken-4">Hints: <i class="mdi-navigation-close right"></i></span>
+        </div>
+      </div>
+        <div class="center-align">
+            <br>
+            <h2>Letters Remaining</h2>
+        </div>
+        <div id="letters-left" class="center-align">
+            
+        </div>
+    </div>
+
+</body>
+
+</html>
