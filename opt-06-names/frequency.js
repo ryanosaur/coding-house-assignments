@@ -50,18 +50,16 @@ var Dictionary = function(){
 
 Dictionary.prototype.sortByValues = function(){
     var scope = this;
-    return Object.keys(this).map(function(key){
+    return Object.keys(scope).map(function(key){
         return {name: key, count: scope[key]};
     })
     .sort(function (prev, next) {
-      if (prev.count < next.count)
-        return 1;
-      if (prev.count > next.count)
-        return -1;
-      return 0;
+        return next.count - prev.count;
     })
-    .filter(function(record){
-        return record.name.length > 0;
-    })
-    .slice(0,19);
+//    .filter(function(record){
+//        return record.name.length > 0;
+//    })
+//    .slice(0,19);
+    .slice(1,20);
 };
+
