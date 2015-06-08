@@ -17,6 +17,7 @@ jQuery(document).ready(function(){
                 () - second search group
                 [0-9] - any number
                 * - any number of times
+                \s - space
                 [|] - until a pipe
                 \s - space
                 
