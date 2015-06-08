@@ -5,7 +5,7 @@ jQuery(document).ready(function(){
         url : "./data.txt", 
         dataType : "text",
         success : function(data){
-            var dict = data.split('\n').map(function(line){
+            data.split('\n').map(function(line){
                 return line.replace(/^(\s*[^\s])([0-9]*\s[|]\s)/g, '');
                 /* regex explained
                 
