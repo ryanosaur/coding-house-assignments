@@ -44,7 +44,7 @@ Array.prototype.createDictionaryFromArray = function(){
     return dict;
 };
 
-var Dictionary = function(){
+var Dictionary = function(){    
     return this;
 };
 
