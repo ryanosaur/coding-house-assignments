@@ -1,8 +1,13 @@
 var CoinDeterminer = {};
 
-CoinDeterminer.countCoins = function(number){
-
-    return true;
+CoinDeterminer.countCoins = function(totalCurrency){
+    var denominations = [1,5,7,9,11];
+    
+    return denominations.reverse().reduce(function(coins, denomination){
+        var currentCoins = Math.floor(totalCurrency / denomination);
+        totalCurrency -= currentCoins * denomination;
+        return coins += currentCoins;
+    }, 0);
 };
 
 
