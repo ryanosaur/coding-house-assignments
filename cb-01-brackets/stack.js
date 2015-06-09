@@ -1,31 +1,31 @@
-var Stack = function(){
-    this.array = [];
-};
+var BracketMatcher = {};
 
-Stack.prototype.push = function(char){
-    this.array.push();
-};
-
-Stack.prototype.pop = function(){
-
-};
-
-function bracketMatcher(string) { 
-
-  // code goes here  
-  return true; 
+BracketMatcher.matchBrackets = function(string) { 
+    var stack = [];
+    return string.split('').reduce(function(size, char){
+        if(char === '{' || char === '}'){
+            stack.indexOf(char) ? stack.push(char) : stack.pop();
+        }
+        return stack.length;
+    }, 0) ? false : true;
 };
 
 function assertEquals(actual, expected){
-    return actual === expected ? 'PASS' : throw new SyntaxError('Error parsing curly braces');
+    return actual === expected ? 'PASS' : _throw('Error parsing curly braces');
 };
 
-function log(object){
-    console.log(object);
+function _throw(message){
+    throw new SyntaxError(message);
 };
 
 var bracketsMatch = '{}{}{}{{}}';
-console.log(assertEquals(bracketMatcher(bracketsMatch), true));
+console.log(assertEquals(BracketMatcher.matchBrackets(bracketsMatch), true));
 
-var bracketsDontMatch = '{}{}{}{{}';
-console.log(assertEquals(bracketMatcher(bracketsDontMatch), false));
+var bracketsDontMatch = '{{}{}{}{}';
+console.log(assertEquals(BracketMatcher.matchBrackets(bracketsDontMatch), false));
+
+var bracketsMatchWithText = '{}{so}{me}{te{}xt}';
+console.log(assertEquals(BracketMatcher.matchBrackets(bracketsMatchWithText), true));
+
+var bracketsDontMatchWithText = '{{so}{me}{te{}xt}';
+console.log(assertEquals(BracketMatcher.matchBrackets(bracketsDontMatchWithText), false));
