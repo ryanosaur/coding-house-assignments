@@ -10,11 +10,10 @@ Stack.prototype.pop = function(){
 
 };
 
-function bracketMatcher() { 
+function bracketMatcher(string) { 
 
   // code goes here  
-  return 1; 
-         
+  return true; 
 };
 
 function assertEquals(actual, expected){
@@ -24,3 +23,9 @@ function assertEquals(actual, expected){
 function log(object){
     console.log(object);
 };
+
+var bracketsMatch = '{}{}{}{{}}';
+console.log(assertEquals(bracketMatcher(bracketsMatch), true));
+
+var bracketsDontMatch = '{}{}{}{{}';
+console.log(assertEquals(bracketMatcher(bracketsDontMatch), false));
