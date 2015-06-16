@@ -1,72 +1,67 @@
 $(document).ready(function(){
-  var prevValue = 0;
+  Operator.prevValue = 0;
   var operators = [13,42,43,45,47,61,99];
   Operator.previousOperator = Operator.default;
 
   $('.operand').on('click', function(){
-    updateScreen($(this).text());
+    Operator.updateScreen($(this).text());
   });
 
   $('#clear').on('click', function(){
     Operator.clear();
     Operator.previousOperator = Operator.default;
-    prevValue = 0;
+    Operator.prevValue = 0;
   });
 
   $('#add').on('click', function(){
-    executePrevious();
+    Operator.executePrevious();
     Operator.previousOperator = Operator.addition;
   });
 
   $('#subtract').on('click', function(){
-    executePrevious();
+    Operator.executePrevious();
     Operator.previousOperator = Operator.subtraction;
   });
 
   $('#multiply').on('click', function(){
-    executePrevious();
+    Operator.executePrevious();
     Operator.previousOperator = Operator.multiply;
   });
 
   $('#divide').on('click', function(){
-    executePrevious();
+    Operator.executePrevious();
     Operator.previousOperator = Operator.divide;
   });
 
   $('#evaluate').on('click', function(){
-    executePrevious();
+    Operator.executePrevious();
     Operator.previousOperator = Operator.default;
   });
 
   $(document).on('keypress', function(e){
     console.log(e.which);
-    if(operators.indexOf(e.which) > -1){
-      executePrevious();
-      Operator.previousOperator = Operator['f'+e.which];
-    }
-    else{
-      updateScreen(String.fromCharCode(e.which));
-    }
+    Operator['f'+e.which](e.which);
   });
 
-  var executePrevious = function(){
-    var $screen = $('#top-screen');
-    var currentValue = $screen.text();
-    var answer = Operator.previousOperator.evaluate(parseFloat(prevValue));
-    Operator.currentOperand = answer;
-    $screen.text(answer);
-    prevValue = 0;
-  }
-
-  var updateScreen = function(currentValue){
-    var $screen = $('#top-screen');
-    var newValue = parseFloat(prevValue + '' + currentValue);
-    $screen.text(newValue);
-    prevValue = newValue;
-  }
 });
 
 var Operator = {};
+
+Operator.executePrevious = function(){
+  var $screen = $('#top-screen');
+  var currentValue = $screen.text();
+  var answer = Operator.previousOperator.evaluate(parseFloat(Operator.prevValue));
+  Operator.currentOperand = answer;
+  $screen.text(answer);
+  Operator.prevValue = 0;
+}
+
+Operator.updateScreen = function(currentValue){
+  var $screen = $('#top-screen');
+  var newValue = parseFloat(Operator.prevValue + '' + currentValue);
+  $screen.text(newValue);
+  Operator.prevValue = newValue;
+}
 
 Operator.clear = function(){
   $('#top-screen').text('0');
@@ -107,11 +102,51 @@ Operator.divide = {
   }
 }
 
-Operator.f43 = Operator.addition; //+
-Operator.f42 = Operator.multiply; // *
-Operator.f47 = Operator.divide; // /
-Operator.f45 = Operator.subtraction; // -
-Operator.f61 = Operator.default; // =
-Operator.f13 = Operator.default; // enter
-Operator.f99 = Operator.clear; // c
+Operator.f43 = function(){
+  Operator.executePrevious();
+  Operator.previousOperator = Operator.addition;
+}
 
+Operator.f42 = function(){
+  Operator.executePrevious();
+  Operator.previousOperator = Operator.multiply;
+}
+
+Operator.f47 = function(){
+  Operator.executePrevious();
+  Operator.previousOperator = Operator.divide;
+}
+
+Operator.f45 = function(){
+  Operator.executePrevious();
+  Operator.previousOperator = Operator.subtraction;
+}
+
+Operator.f61 = function(){
+  Operator.executePrevious();
+  Operator.previousOperator = Operator.default;
+}
+
+Operator.f13 = function(){
+  Operator.executePrevious();
+  Operator.previousOperator = Operator.default;
+}
+
+Operator.f99 = function(){
+  Operator.executePrevious();
+  Operator.previousOperator = Operator.clear;
+}
+
+Operator.f48 = function(){
+  Operator.updateScreen(String.fromCharCode(arguments[0]));
+}
+
+Operator.f49 = Operator.f48;
+Operator.f50 = Operator.f48;
+Operator.f51 = Operator.f48;
+Operator.f52 = Operator.f48;
+Operator.f53 = Operator.f48;
+Operator.f54 = Operator.f48;
+Operator.f55 = Operator.f48;
+Operator.f56 = Operator.f48;
+Operator.f57 = Operator.f48;
