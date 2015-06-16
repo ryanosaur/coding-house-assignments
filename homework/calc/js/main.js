@@ -1,6 +1,6 @@
 $(document).ready(function(){
-  var keyNumbers = [48,49,50,51,52,53,54,55,56,57];
   var prevValue = 0;
+  var operators = [13,42,43,45,47,61,99];
   Operator.previousOperator = Operator.default;
 
   $('.operand').on('click', function(){
@@ -9,6 +9,7 @@ $(document).ready(function(){
 
   $('#clear').on('click', function(){
     Operator.clear();
+    Operator.previousOperator = Operator.default;
     prevValue = 0;
   });
 
@@ -38,7 +39,14 @@ $(document).ready(function(){
   });
 
   $(document).on('keypress', function(e){
-    updateScreen(String.fromCharCode(e.which));
+    console.log(e.which);
+    if(operators.indexOf(e.which) > -1){
+      executePrevious();
+      Operator.previousOperator = Operator['f'+e.which];
+    }
+    else{
+      updateScreen(String.fromCharCode(e.which));
+    }
   });
 
   var executePrevious = function(){
@@ -63,7 +71,6 @@ var Operator = {};
 Operator.clear = function(){
   $('#top-screen').text('0');
   Operator.currentOperand = undefined;
-  Operator.previousOperator = Operator.default;
 }
 
 Operator.default = {
@@ -99,4 +106,12 @@ Operator.divide = {
     return Operator.currentOperand / number;
   }
 }
+
+Operator.f43 = Operator.addition; //+
+Operator.f42 = Operator.multiply; // *
+Operator.f47 = Operator.divide; // /
+Operator.f45 = Operator.subtraction; // -
+Operator.f61 = Operator.default; // =
+Operator.f13 = Operator.default; // enter
+Operator.f99 = Operator.clear; // c
 
