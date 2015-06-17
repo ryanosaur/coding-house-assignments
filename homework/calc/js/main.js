@@ -1,6 +1,5 @@
 $(document).ready(function(){
   Operator.prevValue = 0;
-  var operators = [13,42,43,45,47,61,99];
   Operator.previousOperator = Operator.default;
 
   $('.operand').on('click', function(){
@@ -42,7 +41,6 @@ $(document).ready(function(){
     console.log(e.which);
     Operator['f'+e.which](e.which);
   });
-
 });
 
 var Operator = {};

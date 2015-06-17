@@ -10,6 +10,10 @@
    Base styles: opinionated defaults
    ========================================================================== */
 
+body{
+  background-color:#DFFF77;
+}
+
 .calculator{
   width:400px;
   height:300px;
